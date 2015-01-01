@@ -7,6 +7,8 @@
 }
 .board table {
   border-collapse: collapse;
+  table-layout: fixed;
+  border-spacing: 0;
 }
 
 .scoreboard,
@@ -15,10 +17,20 @@
   vertical-align: top;
 }
 
-.square {
+.square,
+.letter {
   width: 45px;
   height: 45px;
 
+  display: table-cell;
   text-align: center;
   border: 1px solid black;
+}
+
+.square .letter {
+  border: 0;
+}
+
+.square.in-use .bonus {
+  display: none;
 }

@@ -1,5 +1,11 @@
 <div class='scoreboard'>
   <h1>TradeMarked Word Tile Game</h1>
+
+  <div class='active-letters'>
+    <div class='letter'>H</div>
+    <div class='letter'>T</div>
+    <div class='letter'>P</div>
+  </div>
 </div>
 
 <div class='board'>
@@ -8,7 +14,7 @@
       <tr>
         <% row.each_with_index do |square, column_index| %>
           <td class='square'>
-            <%= square.bonus if square.premium? %>
+            <span class='bonus'><%= square.bonus if square.premium? %></span>
             <%= square.letter(row_index, column_index) %>
           </td>
         <% end %>
