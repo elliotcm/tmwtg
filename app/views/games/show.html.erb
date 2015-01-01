@@ -1,14 +1,18 @@
-<h1>Trade Marked Word Tile Game</h1>
+<div class='scoreboard'>
+  <h1>TradeMarked Word Tile Game</h1>
+</div>
 
-<table>
-  <% @game.rows.each_with_index do |row, row_index| %>
-    <tr>
-      <% row.each_with_index do |square, column_index| %>
-        <td>
-          <%= square.bonus if square.premium? %>
-          <%= square.letter(row_index, column_index) %>
-        </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+<div class='board'>
+  <table>
+    <% @game.rows.each_with_index do |row, row_index| %>
+      <tr>
+        <% row.each_with_index do |square, column_index| %>
+          <td class='square'>
+            <%= square.bonus if square.premium? %>
+            <%= square.letter(row_index, column_index) %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </table>
+</div>

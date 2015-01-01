@@ -1,0 +1,24 @@
+.scoreboard {
+  width: 39%;
+}
+
+.board {
+  width: 60%;
+}
+.board table {
+  border-collapse: collapse;
+}
+
+.scoreboard,
+.board {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.square {
+  width: 45px;
+  height: 45px;
+
+  text-align: center;
+  border: 1px solid black;
+}
