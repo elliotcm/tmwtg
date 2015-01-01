@@ -1,5 +1,7 @@
 .scoreboard {
   width: 39%;
+  height: 100%;
+  position: relative;
 }
 
 .board {
@@ -33,4 +35,9 @@
 
 .square.in-use .bonus {
   display: none;
+}
+
+.submit-words {
+  position: absolute;
+  bottom: 0;
 }
