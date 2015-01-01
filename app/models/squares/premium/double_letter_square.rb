@@ -1,0 +1,3 @@
+class DoubleLetterSquare < PremiumSquare
+
+end

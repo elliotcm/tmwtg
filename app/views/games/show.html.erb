@@ -1,0 +1,14 @@
+<h1>Trade Marked Word Tile Game</h1>
+
+<table>
+  <% @game.rows.each_with_index do |row, row_index| %>
+    <tr>
+      <% row.each_with_index do |square, column_index| %>
+        <td>
+          <%= square.bonus if square.premium? %>
+          <%= square.letter(row_index, column_index) %>
+        </td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>

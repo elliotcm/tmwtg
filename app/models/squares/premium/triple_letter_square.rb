@@ -1,0 +1,3 @@
+class TripleLetterSquare < PremiumSquare
+
+end

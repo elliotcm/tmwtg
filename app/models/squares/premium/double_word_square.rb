@@ -1,0 +1,3 @@
+class DoubleWordSquare < PremiumSquare
+
+end
