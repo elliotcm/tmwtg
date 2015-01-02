@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :games do
     get 'players/:id', to: 'games#player', as: 'player'
     post 'join', to: 'games#join', as: 'join'
+    post 'start', to: 'games#start', as: 'start'
   end
 
   resources :sessions, only: [:new, :create]

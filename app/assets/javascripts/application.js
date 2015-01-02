@@ -3,3 +3,4 @@
 //= require_self
 
 TMWTG.letterPlacement.init();
+TMWTG.lobby.init();

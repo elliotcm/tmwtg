@@ -1,4 +1,4 @@
-<div class='scoreboard'>
+<div class='scoreboard <%= "lobby" if @game.lobby %>'>
   <h1>TradeMarked Word Tile Game</h1>
 
   <div class='active-letters'>
@@ -7,7 +7,9 @@
     <div class='letter'>P</div>
   </div>
 
-  <button class='submit-words'>Submit words</button>
+  <% if !@game.lobby? %>
+    <button class='submit-words'>Submit words</button>
+  <% end %>
 </div>
 
 <div class='board'>
@@ -23,4 +25,22 @@
       </tr>
     <% end %>
   </table>
+
+  <div class='lobby-overlay'>
+    <div class='lobby-info'>
+      <h2>Waiting for players to join</h2>
+
+      <ul class='player-list'>
+        <% @game.players.each do |player| %>
+        <li><%= player.name %></li>
+        <% end %>
+      </ul>
+
+      <p class='join-instructions'>
+        Go to <%= root_url %> and join game #<%= @game.id %>
+      </p>
+
+      <%= button_to 'Start game', game_start_path(@game), class: 'start-game' %>
+    </div>
+  </div>
 </div>

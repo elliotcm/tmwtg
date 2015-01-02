@@ -33,6 +33,14 @@ class GamesController < ApplicationController
     redirect_to game_player_path(game, current_player)
   end
 
+  def start
+    game = Game.find(params[:game_id])
+
+    game.update_attribute(:lobby, false)
+
+    redirect_to game
+  end
+
 private
 
   def require_login
