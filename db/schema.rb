@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102005834) do
+ActiveRecord::Schema.define(version: 20150102094714) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "lobby",      limit: 1, default: true
+  end
+
+  create_table "games_players", force: :cascade do |t|
+    t.integer  "game_id",    limit: 4
+    t.integer  "player_id",  limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "letters", force: :cascade do |t|

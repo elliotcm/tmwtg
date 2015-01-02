@@ -1,5 +1,6 @@
 class Player < ActiveRecord::Base
   has_many :letters
+  has_and_belongs_to_many :games
 
   MAX_HAND = 7
 

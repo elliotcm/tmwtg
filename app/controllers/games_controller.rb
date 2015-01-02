@@ -25,6 +25,14 @@ class GamesController < ApplicationController
     end
   end
 
+  def join
+    game = Game.find(params[:game_id])
+
+    game.players << current_player
+
+    redirect_to game_player_path(game, current_player)
+  end
+
 private
 
   def require_login
