@@ -15,7 +15,14 @@ class GamesController < ApplicationController
   def index; end
 
   def player
-    render json: {test: 'ok'}
+    @game = Game.find(params[:game_id])
+
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: {test: 'ok'}
+      end
+    end
   end
 
 private

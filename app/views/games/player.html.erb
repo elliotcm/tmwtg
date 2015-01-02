@@ -1,0 +1,7 @@
+<h1>TradeMarked Word Tile Game</h1>
+
+<ul>
+  <% current_player.letters.where(game_id: @game.id).each do |letter| %>
+  <li class='letter'><%= letter.character %></li>
+  <% end %>
+</ul>
