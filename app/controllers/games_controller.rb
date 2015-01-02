@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_filter :require_login, only: [:player]
+  before_filter :require_login, only: [:hand]
 
   def show
     @game = Game.find(params[:id])
@@ -14,7 +14,7 @@ class GamesController < ApplicationController
 
   def index; end
 
-  def player
+  def hand
     @game = Game.find(params[:game_id])
 
     respond_to do |format|
@@ -30,7 +30,7 @@ class GamesController < ApplicationController
 
     game.players << current_player
 
-    redirect_to game_player_path(game, current_player)
+    redirect_to game_hand_path(game)
   end
 
   def start
@@ -43,6 +43,20 @@ class GamesController < ApplicationController
     game.update_attribute(:lobby, false)
 
     redirect_to game
+  end
+
+  def send_to
+    if params[:letter_ids]
+      game = Game.find(params[:game_id])
+
+      letters = Letter.find(params[:letter_ids])
+
+      letters.each do |letter|
+        letter.update_attribute(:on_board, (params[:target] == 'board'))
+      end
+    end
+
+    render json: {errors: []}
   end
 
 private

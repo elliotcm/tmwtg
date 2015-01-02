@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150102094714) do
+ActiveRecord::Schema.define(version: 20150102110308) do
 
   create_table "games", force: :cascade do |t|
     t.datetime "created_at"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150102094714) do
     t.boolean  "blank",        limit: 1,   default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "on_board",     limit: 1,   default: false
   end
 
   create_table "players", force: :cascade do |t|

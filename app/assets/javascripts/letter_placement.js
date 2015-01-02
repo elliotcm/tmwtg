@@ -5,7 +5,7 @@
 
   TMWTG.letterPlacement = {
     init: function() {
-      var letters = $('.letter');
+      var letters = $('.active-letters').find('.letter');
 
       letters.on('click', function(event) {
         letters.removeClass('selected');

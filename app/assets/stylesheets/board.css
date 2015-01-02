@@ -42,3 +42,7 @@
   position: absolute;
   bottom: 0;
 }
+
+.letter.selected {
+  outline: 1px solid hotpink;
+}

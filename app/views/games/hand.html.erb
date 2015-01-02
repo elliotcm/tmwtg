@@ -1,0 +1,28 @@
+<h1>TradeMarked Word Tile Game</h1>
+
+<div class='hand'
+  data-lobby='<%= @game.lobby? %>'
+  data-send-to-path='<%= game_send_to_path(@game) %>'
+>
+  <% if @game.lobby? %>
+    <p>
+      Waiting for game to start..
+    </p>
+  <% else %>
+    <ul>
+      <% current_player.letters.where(game_id: @game.id, on_board: false).each do |letter| %>
+        <li class='letter' data-id='<%= letter.id %>'>
+          <%= letter.character %>
+        </li>
+      <% end %>
+    </ul>
+
+    <button class='send-to board' disabled='disabled' data-target='board'>
+      Send to board
+    </button>
+
+    <button class='send-to hand' disabled='disabled' data-target='hand'>
+      Send to hand
+    </button>
+  <% end %>
+</div>

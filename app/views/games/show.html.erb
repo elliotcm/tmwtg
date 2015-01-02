@@ -1,11 +1,17 @@
 <div class='scoreboard <%= "lobby" if @game.lobby %>'>
   <h1>TradeMarked Word Tile Game</h1>
 
-  <div class='active-letters'>
-    <div class='letter'>H</div>
-    <div class='letter'>T</div>
-    <div class='letter'>P</div>
-  </div>
+  <% @game.players.each do |player| %>
+    <section>
+      <h2><%= player.name %></h2>
+
+      <div class='active-letters'>
+        <% player.letters.where(on_board: true, column_index: nil, row_index: nil).each do |letter| %>
+          <div class='letter'><%= letter.character %></div>
+        <% end %>
+      </div>
+    </section>
+  <% end %>
 
   <% if !@game.lobby? %>
     <button class='submit-words'>Submit words</button>
