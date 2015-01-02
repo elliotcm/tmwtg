@@ -5,10 +5,13 @@
 
   TMWTG.letterPlacement = {
     init: function() {
-      var letters = $('.active-letters').find('.letter');
+      var $playerInfo = $('.player-info');
+      var $letters = $playerInfo.find('.letter');
 
-      letters.on('click', function(event) {
-        letters.removeClass('selected');
+      TMWTG.sendTo.init($playerInfo);
+
+      $letters.on('click', function(event) {
+        $letters.removeClass('selected');
         $(this).addClass('selected');
         TMWTG.letterPlacement.selectedLetter = $(this);
 

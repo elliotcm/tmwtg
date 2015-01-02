@@ -2,13 +2,19 @@
   <h1>TradeMarked Word Tile Game</h1>
 
   <% @game.players.each do |player| %>
-    <section>
+    <section class='player-info' data-send-to-path='<%= game_send_to_path(@game) %>'>
       <h2><%= player.name %></h2>
 
-      <div class='active-letters'>
+      <div class='letters'>
         <% player.letters.where(on_board: true, column_index: nil, row_index: nil).each do |letter| %>
-          <div class='letter'><%= letter.character %></div>
+          <div class='letter' data-id='<%= letter.id %>'>
+            <%= letter.character %>
+          </div>
         <% end %>
+
+        <button class='send-to hand' disabled='disabled' data-target='hand'>
+          Send to hand
+        </button>
       </div>
     </section>
   <% end %>
