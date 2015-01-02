@@ -1,7 +1,19 @@
 <h1>TradeMarked Word Tile Game</h1>
 
-<ul>
-  <% current_player.letters.where(game_id: @game.id).each do |letter| %>
-  <li class='letter'><%= letter.character %></li>
-  <% end %>
-</ul>
+<% if @game.lobby? %>
+  <p>
+    Waiting for game to start..
+  </p>
+
+  <script charset="utf-8">
+    setTimeout(function() {
+      window.location.reload();
+    }, 2000);
+  </script>
+<% else %>
+  <ul>
+    <% current_player.letters.where(game_id: @game.id).each do |letter| %>
+    <li class='letter'><%= letter.character %></li>
+    <% end %>
+  </ul>
+<% end %>

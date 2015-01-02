@@ -36,6 +36,10 @@ class GamesController < ApplicationController
   def start
     game = Game.find(params[:game_id])
 
+    game.players.each do |player|
+      player.fill_hand(game)
+    end
+
     game.update_attribute(:lobby, false)
 
     redirect_to game
