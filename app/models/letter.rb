@@ -1,6 +1,6 @@
 class Letter < ActiveRecord::Base
   def self.create_starting_set(game_id)
-    STARTING_SET.each do |character|
+    STARTING_SET.each_char do |character|
       Letter.create!(game_id: game_id, character: character)
     end
 
@@ -44,7 +44,7 @@ class Letter < ActiveRecord::Base
     'X' * 1,
     'Q' * 1,
     'Z' * 1,
-  ].flatten.freeze
+  ].join.freeze
 
   VALUES = {
     'E' => 1,
