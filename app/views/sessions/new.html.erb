@@ -1,0 +1,29 @@
+<h1>Login to play</h1>
+
+<% if Player.any? %>
+  <p>
+    Login as
+  </p>
+
+  <ul>
+    <% Player.all.each do |player| %>
+      <li>
+        <%= button_to player.name, sessions_path(
+          player_id: player.id,
+          return_url: params[:return_url]
+        ) %>
+      </li>
+    <% end %>
+  </ul>
+
+  <p>
+    or
+  </p>
+<% end %>
+
+<%= form_for Player.new, url: sessions_path do |f| %>
+  <%= f.text_field :name %>
+  <%= hidden_field_tag :return_url, params[:return_url] %>
+
+  <button>Create user</button>
+<% end %>

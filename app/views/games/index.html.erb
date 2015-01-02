@@ -1,0 +1,7 @@
+<h1>Join a game</h1>
+
+<ul>
+  <% Game.where(lobby: true).order(created_at: :desc).each do |game| %>
+    <li><%= link_to "Join game ##{game.id}", game_player_path(game.id, session[:player_id]) %></li>
+  <% end %>
+</ul>
