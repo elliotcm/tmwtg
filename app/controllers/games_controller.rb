@@ -59,6 +59,22 @@ class GamesController < ApplicationController
     render json: {errors: []}
   end
 
+  def save_letters
+    if params[:letters]
+      game = Game.find(params[:game_id])
+
+      params[:letters].each do |index, letter_data|
+        letter = Letter.find(letter_data[:id])
+        letter.update_attributes!(
+          row_index: letter_data[:row_index],
+          column_index: letter_data[:column_index]
+        )
+      end
+    end
+
+    render json: {errors: []}
+  end
+
 private
 
   def require_login

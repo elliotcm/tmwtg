@@ -8,7 +8,7 @@
       <div class='letters'>
         <% player.letters.where(on_board: true, column_index: nil, row_index: nil).each do |letter| %>
           <div class='letter' data-id='<%= letter.id %>'>
-            <%= letter.character %>
+            <span class='character'><%= letter.character %></span>
           </div>
         <% end %>
 
@@ -20,18 +20,24 @@
   <% end %>
 
   <% if !@game.lobby? %>
-    <button class='submit-words'>Submit words</button>
+    <div class='word-submission'>
+      <ul class='new-word-list'></ul>
+      <button class='submit-words'>Submit words</button>
+    </div>
   <% end %>
 </div>
 
-<div class='board'>
+<div class='board' data-save-letters-path='<%= game_save_letters_path(@game) %>'>
   <table>
     <% @game.rows.each_with_index do |row, row_index| %>
       <tr>
         <% row.each_with_index do |square, column_index| %>
-          <td class='square'>
-            <span class='bonus'><%= square.bonus if square.premium? %></span>
-            <%= square.letter(row_index, column_index) %>
+          <td class='square' data-row-index='<%= row_index %>' data-column-index='<%= column_index %>'>
+            <% if letter = square.letter(row_index, column_index) %>
+              <%= letter.character %>
+            <% else %>
+              <span class='bonus'><%= square.bonus if square.premium? %></span>
+            <% end %>
           </td>
         <% end %>
       </tr>

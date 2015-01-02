@@ -31,7 +31,21 @@
           .addClass('in-use')
           .append(selectedLetter);
 
+        selectedLetter.data('row-index', targetSquare.data('row-index'));
+        selectedLetter.data('column-index', targetSquare.data('column-index'));
+
         TMWTG.letterPlacement.selectedLetter = undefined;
+
+        var $newWordList = $('.new-word-list');
+        $newWordList.empty();
+        $.each(TMWTG.wordFinder.newWords(), function(index, word) {
+          var $word = $('<li class="word" />');
+          $.each(word, function(index, $letter) {
+            $word.text($word.text() + $letter.find('.character').text());
+          });
+
+          $newWordList.append($word);
+        });
       });
     }
   };

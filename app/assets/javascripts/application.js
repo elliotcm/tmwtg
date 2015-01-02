@@ -9,5 +9,6 @@ $.ajaxSetup({
 });
 
 TMWTG.letterPlacement.init();
+TMWTG.wordSubmission.init();
 TMWTG.lobby.init();
 TMWTG.hand.init();
